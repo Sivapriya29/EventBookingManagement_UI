@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Event booking manangement</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">Event types</a>
+        </li> -->
+        <li class="nav-item" *ngIf="isLoggedIn && role=='admin'">
+          <a class="nav-link" routerLink="/addEvent" routerLinkActive="active">Add Event</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn && role=='admin'">
+            <a class="nav-link" routerLink="/allFeedbacksList" routerLinkActive="active">Feedbacks</a>
+          </li>
+
+          <li class="nav-item" *ngIf="isLoggedIn && role=='admin'">
+            <a class="nav-link" routerLink="/bookingList" routerLinkActive="active">Bookings List</a>
+          </li>
+
+          <li class="nav-item" *ngIf="isLoggedIn && role=='user'">
+            <a class="nav-link" routerLink="/bookingDetails" routerLinkActive="active">Your Bookings</a>
+          </li>
+
+          <li class="nav-item" *ngIf="isLoggedIn && role=='user'">
+            <a class="nav-link" routerLink="/feedbackList" routerLinkActive="active">Your Feedbacks</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="/about" routerLinkActive="active">Speakers List</a>
+          </li> -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item" *ngIf="!isLoggedIn" >
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="!isLoggedIn" >
+            <a class="nav-link" routerLink="/signup" routerLinkActive="active">SignUp</a>
+          </li>
+          <li class="dropdown" appDropdown *ngIf="isLoggedIn">
+            <a class="dropdown-toggle" role="button" style="color: white;"> {{emailId}} </a>
+          <ul class = "dropdown-menu">
+            <li><a (click)="onLogout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>

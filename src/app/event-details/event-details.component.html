@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div class="event-details-container" *ngIf="event; else loadingOrError">
+  <div class="event-details">
+    <h2 class="event-title">{{ event.event_name }}</h2>
+    <div class="event-subtitle">{{ event.event_date | date:'dd/MM/yyyy, h:mm a' : timeZone }}</div>
+    <div class="event-info">
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <p><strong>About the event:</strong> {{ event.event_description }}</p>
+    <p><strong>Event type:</strong> {{ event.event_type }}</p>
+    <p><strong>Speaker:</strong> {{ event.speaker_name }}</p>
+    <p><strong>Organized by:</strong> {{ event.organizer_name }}</p>
+    <p><strong>Max Seats:</strong> {{ event.capacity }}</p>
+    <p><strong>Price Per Person:</strong> {{ event.per_person_price }}</p>
+  </div>
+  <button class="book-event-button" (click)="bookEvent()" *ngIf="role==='user'">Book Event</button>
+  <button class="book-event-button" (click)="addFeedback()" *ngIf="role==='user'">Add feedback</button>
+  <button class="book-event-button" (click)="updateEvent()" *ngIf="role==='admin'">Update Event Details</button>
+  <button class="book-event-button" (click)="deleteEvent(event.id)" *ngIf="role==='admin'">Delete Event</button>
+</div>
+</div>
+  
+  <div *ngIf="!event">
+    <p>Event not found!</p>
+  </div>
+
+  <ng-template #loadingOrError>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <div *ngIf="!error" class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </ng-template>
+  

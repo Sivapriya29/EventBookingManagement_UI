@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="update-event-container">
+    <h2>Update Event</h2>
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="event_name">Event Name</label>
+        <input id="event_name" formControlName="event_name" type="text" />
+        <div *ngIf="submitted && eventForm.controls.name.errors" class="error">
+          Event Name is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="event_description">Description</label>
+        <textarea id="event_description" formControlName="event_description"></textarea>
+        <div *ngIf="submitted && eventForm.controls.description.errors" class="error">
+          Description is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input id="location" formControlName="location" type="text" />
+        <div *ngIf="submitted && eventForm.controls.location.errors" class="error">
+          Location is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="event_date">Date</label>
+        <input id="event_date" formControlName="event_date" type="datetime-local" />
+        <div *ngIf="submitted && eventForm.controls.date.errors" class="error">
+          Date is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="per_person_price">Price Per Person</label>
+        <input id="per_person_price" formControlName="per_person_price" type="number" />
+        <div *ngIf="submitted && eventForm.controls.per_person_price.errors" class="error">
+          Price Per Person is required and must be a non-negative number
+        </div>
+      </div>
+  
+      <button type="submit" class="btn">Update Event</button>
+    </form>
+  </div>
+  

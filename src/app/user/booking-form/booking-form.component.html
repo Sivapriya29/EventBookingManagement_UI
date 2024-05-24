@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+<div class="booking-form-container">
+  <h2>Book Event: {{ event?.event_name }}</h2>
+<form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="event_id">Event ID:</label>
+      <input type="text" id="event_id" formControlName="event_id" class="form-control">
+      <!-- <div *ngIf="bookingForm.get('event_id').invalid && (bookingForm.get('event_id').dirty || bookingForm.get('event_id').touched)">
+        <small *ngIf="bookingForm.get('event_id').errors?.required">Event ID is required.</small>
+      </div> -->
+    </div>
+    
+    <!-- <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" required>
+      <div *ngIf="bookingForm.get('email').invalid && (bookingForm.get('email').dirty || bookingForm.get('email').touched)">
+        <small *ngIf="bookingForm.get('email').errors?.required">Email is required.</small>
+        <small *ngIf="bookingForm.get('email').errors?.email">Invalid email format.</small>
+      </div>
+    </div> -->
+    
+    <!-- <div>
+      <label for="number_of_tickets">Number of Tickets:</label>
+      <input type="number" id="number_of_tickets" formControlName="number_of_tickets" required>
+      <div *ngIf="bookingForm.get('number_of_tickets').invalid && (bookingForm.get('number_of_tickets').dirty || bookingForm.get('number_of_tickets').touched)">
+        <small *ngIf="bookingForm.get('number_of_tickets').errors?.required">Number of tickets is required.</small>
+        <small *ngIf="bookingForm.get('number_of_tickets').errors?.min">Please enter a valid number (minimum 1 ticket).</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="total_amount">Toatl Amount:</label>
+      <input type="number" id="total_amount" formControlName="total_amount" required>
+      <div *ngIf="bookingForm.get('total_amount').invalid && (bookingForm.get('total_amount').dirty || bookingForm.get('total_amount').touched)">
+        <small *ngIf="bookingForm.get('total_amount').errors?.required">Number of tickets is required.</small>
+        <small *ngIf="bookingForm.get('total_amounts').errors?.min">Please enter a valid number (minimum 1 ticket).</small>
+      </div>
+    </div> -->
+    <div class="form-group">
+      <label for="number_of_tickets">Number of Tickets:</label>
+      <input
+        type="number"
+        id="number_of_tickets"
+        formControlName="number_of_tickets"
+        class="form-control"
+        (input)="calculateTotalAmount()"
+        required>
+      <div *ngIf="submitted && bookingForm.get('number_of_tickets').invalid" class="invalid-feedback">
+        <div *ngIf="bookingForm.get('number_of_tickets').errors?.required">Number of tickets is required.</div>
+        <div *ngIf="bookingForm.get('number_of_tickets').errors?.min">Please enter a valid number (minimum 1 ticket).</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="total_amount">Total Amount:</label>
+      <input type="number" id="total_amount" formControlName="total_amount" class="form-control">
+    </div>
+    
+    <button type="submit" [disabled]="bookingForm.invalid">Book Tickets</button>
+  </form>
+</div>
+  

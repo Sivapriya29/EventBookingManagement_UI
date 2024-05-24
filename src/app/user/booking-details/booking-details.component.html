@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="booking-list-container">
+    <h2>Your Bookings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Number of Tickets</th>
+          <th>Total Amount</th>
+          <th>Booking Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookings">
+          <td>{{ booking.Event_name }}</td>
+          <td>{{ booking.Number_of_tickets }}</td>
+          <td>{{ booking.Total_amount }}</td>
+          <td>{{ booking.Created_at | date: 'short' }}</td>
+          <td><button (click)="cancelBooking(booking.ID)">Cancel</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

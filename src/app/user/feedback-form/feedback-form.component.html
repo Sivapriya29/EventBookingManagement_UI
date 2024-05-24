@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<div class="feedback-form-container">
+    <h2>Submit Feedback</h2>
+    <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" formControlName="rating" min="1" max="5">
+        <div *ngIf="feedbackForm.get('rating')?.invalid && (feedbackForm.get('rating')?.dirty || feedbackForm.get('rating')?.touched)">
+          <small *ngIf="feedbackForm.get('rating')?.errors?.['required']">Rating is required.</small>
+          <small *ngIf="feedbackForm.get('rating')?.errors?.['min'] || feedbackForm.get('rating')?.errors?.['max']">Rating must be between 1 and 5.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="comments">Comments:</label>
+        <textarea id="comments" formControlName="comments"></textarea>
+        <div *ngIf="feedbackForm.get('comments')?.invalid && (feedbackForm.get('comments')?.dirty || feedbackForm.get('comments')?.touched)">
+          <small *ngIf="feedbackForm.get('comments')?.errors?.['required']">Comments are required.</small>
+        </div>
+      </div>
+      <button type="submit" [disabled]="feedbackForm.invalid">Submit</button>
+    </form>
+  </div>
+  

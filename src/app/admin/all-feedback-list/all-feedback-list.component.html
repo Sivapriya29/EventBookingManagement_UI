@@ -1,0 +1,21 @@
+<!-- feedback-list.component.html -->
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <h2>User Feedbacks</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Event ID</th>
+        <th>Rating</th>
+        <th>Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let feedback of feedbacks">
+        <td>{{ feedback.event_id }}</td>
+        <td>{{ feedback.rating }}</td>
+        <td>{{ feedback.comments }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

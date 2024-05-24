@@ -1,0 +1,66 @@
+.login{
+    color: #fff;
+  }
+  .login a{
+    color: #d39e00;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  small {
+    color: red;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Adjust styles for input[type="time"] on Firefox */
+  @supports (-moz-appearance:none) {
+    input[type="time"] {
+      /* Override Firefox's default styling */
+      -moz-appearance:textfield;
+    }
+  }

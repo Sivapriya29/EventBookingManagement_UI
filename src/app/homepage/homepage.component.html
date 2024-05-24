@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+<div class="row">
+<div class="col-md-4" *ngFor="let event of events">
+    <!-- <div class="card" style="width: 18rem;"> -->
+      <div class="card mb-4">
+        <div class="card-body">
+      <img class="card-img-top" [src]="getImageForEventType(event.event_type)" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ event.event_name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ event.event_date|date:'dd/MM/yyyy, h:mm a' : timeZone }}</h6>
+        <p class="card-text">
+          <strong>Location:</strong> {{ event.location }}<br />
+          <!-- <strong>Description:</strong> {{ event.event_description }} -->
+        </p>
+        <div><a href="/eventDetails/{{event.id}}" class="btn btn-primary pull-right">View Event details</a></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
